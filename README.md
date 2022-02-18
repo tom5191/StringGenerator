@@ -59,3 +59,19 @@ const options = {
 const code = await generate(options);
 
 ```
+
+#### Generate default length string with lower case, upper case, and special characters required, but with specific characters removed
+
+```bash
+const options = {
+    length: 15,
+    upperCase:true
+    lowerCase: true,
+    specialChar: true,
+    strict: true,
+    excluded: ['*', '$', '#']
+};
+
+const code = await generate(options);
+
+```
