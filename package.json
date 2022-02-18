@@ -1,0 +1,16 @@
+{
+  "name": "string-generator",
+  "version": "1.0.0",
+  "description": "Generate random length and character strings",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "author": "Curate",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.0"
+  }
+}
