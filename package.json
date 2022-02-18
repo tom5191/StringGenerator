@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Generate random length and character strings",
   "main": "./src/index.js",
+  "repository": "https://github.com/curateco/string-generator",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },
   "author": "Curate",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.3.6",
