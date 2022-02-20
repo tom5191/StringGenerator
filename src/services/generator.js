@@ -84,7 +84,7 @@ const upperCase = [
   'Y',
   'Z',
 ];
-const excludeOptions = ['exclude', 'length', 'strict'];
+const excludeOptions = ['excluded', 'length', 'strict'];
 
 module.exports = {
   createPool: async options => {
@@ -121,13 +121,12 @@ module.exports = {
     const keys = Object.keys(options);
     const modifiedKeys = keys.filter(key => !excludeOptions.includes(key));
     let validated = 0;
-
     modifiedKeys.forEach(key => {
-      if (key === 'upperCase') {
-        if (hasUppercase(string)) validated++;
-      }
       if (key === 'lowerCase') {
         if (hasLowercase(string)) validated++;
+      }
+      if (key === 'upperCase') {
+        if (hasUppercase(string)) validated++;
       }
       if (key === 'numbers') {
         if (hasNumber(string)) validated++;

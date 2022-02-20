@@ -5,23 +5,37 @@ const {
 } = require('./services/generator');
 const { convertToString } = require('./services/utils');
 
-module.exports.generate = options => {
-  options = options || {};
+const generateString = function (options) {
   return createPool(options)
     .then(pool => generateArrayOfCharacters(options, pool))
     .then(generateStringArray => convertToString(generateStringArray))
     .then(string => {
-      let password;
+      let generatedString;
       if (options?.strict) {
         if (validateStrictString(string, options)) {
-          password = string;
+          generatedString = string;
         } else {
-          module.exports.generate(options);
+          return generateString(options);
         }
       } else {
-        password = string;
+        generatedString = string;
       }
 
-      return password;
+      return generatedString;
     });
+}
+
+module.exports.generate = options => {
+  options = options || {};
+
+  return generateString(options)
 };
+
+module.exports.generateMultiple = (amount, options) => {
+  options = options || {};
+  let strings = []
+  for (let i = 1; i <= amount; i++) {
+    strings.push(generateString(options))
+  }
+  return Promise.all(strings)
+}

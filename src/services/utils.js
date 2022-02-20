@@ -1,5 +1,5 @@
 const premadeFilters = [
-  { name: 'cognitoPassword', excluded: ['?', '>', '<', '=', '+', '&', '^', '%', '`'] },
+  { name: 'urlSafeChars', excluded: ['?', '>', '<', '=', '+', '&', '^', '%', '`'] },
 ];
 
 module.exports = {
@@ -18,8 +18,8 @@ module.exports = {
     return array;
   },
 
-  convertToString: passwordArray => {
-    return module.exports.shuffleArray(passwordArray).join('');
+  convertToString: stringArray => {
+    return module.exports.shuffleArray(stringArray).join('');
   },
 
   hasUppercase: value => {

@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "repository": "https://github.com/curateco/string-generator",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "mocha"
   },
   "author": "Curate",
   "license": "MIT",
