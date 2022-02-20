@@ -75,3 +75,18 @@ const options = {
 const code = await generate(options);
 
 ```
+
+#### Generate multiple strings
+```bash
+const options = {
+    length: 15,
+    upperCase:true
+    lowerCase: true,
+    specialChar: true,
+    strict: true,
+    excluded: ['*', '$', '#']
+};
+
+const amount = 3
+const codes = await generateMultiple(amount, options)
+```
