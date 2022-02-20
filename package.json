@@ -1,5 +1,5 @@
 {
-  "name": "@curate/string-generator",
+  "name": "@curateco/string-generator",
   "version": "1.0.0",
   "description": "Generate random length and character strings",
   "main": "./src/index.js",
