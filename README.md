@@ -76,6 +76,22 @@ const code = await generate(options);
 
 ```
 
+#### Generate default length string with lower case, upper case, and special characters required, that has save characters for urls
+
+```bash
+const options = {
+    length: 15,
+    upperCase:true
+    lowerCase: true,
+    specialChar: true,
+    strict: true,
+    excluded: 'urlSafeChars'
+};
+
+const code = await generate(options);
+
+```
+
 #### Generate multiple strings
 ```bash
 const options = {
