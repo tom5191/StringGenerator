@@ -1,9 +1,9 @@
 {
-  "name": "@curateco/string-generator",
+  "name": "@tom5191/string-generator",
   "version": "1.0.0",
   "description": "Generate random length and character strings",
   "main": "./src/index.js",
-  "repository": "https://github.com/curateco/string-generator",
+  "repository": "",
   "scripts": {
     "test": "mocha"
   },
