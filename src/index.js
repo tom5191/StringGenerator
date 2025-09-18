@@ -1,11 +1,11 @@
-const {
+import {
   createPool,
   generateArrayOfCharacters,
   validateStrictString,
-} = require('./services/generator');
-const { convertToString } = require('./services/utils');
+} from './services/generator';
+import { convertToString } from './services/utils';
 
-const generateString = function (options) {
+function generateString(options) {
   return createPool(options)
     .then(pool => generateArrayOfCharacters(options, pool))
     .then(generateStringArray => convertToString(generateStringArray))
@@ -25,17 +25,16 @@ const generateString = function (options) {
     });
 }
 
-module.exports.generate = options => {
-  options = options || {};
-
+export function generate(options = {}) {
   return generateString(options)
-};
+}
 
-module.exports.generateMultiple = (amount, options) => {
-  options = options || {};
-  let strings = []
+export function generateMultiple(amount, options = {}) {
+  let strings = [];
+
   for (let i = 1; i <= amount; i++) {
     strings.push(generateString(options))
   }
+
   return Promise.all(strings)
 }

@@ -1,11 +1,11 @@
-const {
+import {
   findExclusion,
   hasLowercase,
   hasNumber,
   hasSymbol,
   hasUppercase,
   shuffleArray,
-} = require('./utils');
+} from './utils';
 const specialChars = [
   '`',
   '~',
@@ -86,55 +86,56 @@ const upperCase = [
 ];
 const excludeOptions = ['excluded', 'length', 'strict'];
 
-module.exports = {
-  createPool: async options => {
-    let pool = [];
-    const keys = Object.keys(options);
-    const modifiedKeys = keys.filter(key => !excludeOptions.includes(key));
-    if (modifiedKeys.length === 0) {
-      pool.push(...lowerCase);
-    }
 
-    if (options?.numbers) pool.push(...numbers);
-    if (options?.specialChars) pool.push(...pool, ...specialChars);
-    if (options?.lowerCase) pool.push(...pool, ...lowerCase);
-    if (options?.upperCase) pool.push(...pool, ...upperCase);
-    if (options?.excluded) {
-      const excludeArray =
-        typeof options.excluded === 'string' ? findExclusion(options) : options.excluded;
-      pool = pool.filter(char => !excludeArray.includes(char));
-    }
-    pool = await shuffleArray(pool);
-    return Promise.resolve(pool);
-  },
+export async function createPool(ptions) {
+  let pool = [];
+  const keys = Object.keys(options);
+  const modifiedKeys = keys.filter(key => !excludeOptions.includes(key));
 
-  generateArrayOfCharacters: ({ length = 10 }, pool) => {
-    let selectedChars = [];
-    for (let i = 1; i <= length; i++) {
-      const randomNumber = Math.floor(Math.random() * pool.length);
-      selectedChars.push(...pool[randomNumber]);
-    }
-    return Promise.resolve(selectedChars);
-  },
+  if (modifiedKeys.length === 0) {
+    pool.push(...lowerCase);
+  }
 
-  validateStrictString: (string, options) => {
-    const keys = Object.keys(options);
-    const modifiedKeys = keys.filter(key => !excludeOptions.includes(key));
-    let validated = 0;
-    modifiedKeys.forEach(key => {
-      if (key === 'lowerCase') {
-        if (hasLowercase(string)) validated++;
-      }
-      if (key === 'upperCase') {
-        if (hasUppercase(string)) validated++;
-      }
-      if (key === 'numbers') {
-        if (hasNumber(string)) validated++;
-      }
-      if (key === 'specialChars') {
-        if (hasSymbol(string)) validated++;
-      }
-    });
-    return modifiedKeys.length === validated;
-  },
-};
+  if (options?.numbers) pool.push(...numbers);
+  if (options?.specialChars) pool.push(...pool, ...specialChars);
+  if (options?.lowerCase) pool.push(...pool, ...lowerCase);
+  if (options?.upperCase) pool.push(...pool, ...upperCase);
+  if (options?.excluded) {
+    const excludeArray =
+      typeof options.excluded === 'string' ? findExclusion(options) : options.excluded;
+    pool = pool.filter(char => !excludeArray.includes(char));
+  }
+
+  pool = await shuffleArray(pool);
+
+  return Promise.resolve(pool);
+}
+
+export function generateArrayOfCharacters({ length = 10 }, pool) {
+  let selectedChars = [];
+
+  for (let i = 1; i <= length; i++) {
+    const randomNumber = Math.floor(Math.random() * pool.length);
+    selectedChars.push(...pool[randomNumber]);
+  }
+
+  return Promise.resolve(selectedChars);
+}
+
+export function validateStrictString(string, options) {
+  const keys = Object.keys(options);
+  const modifiedKeys = keys.filter(key => !excludeOptions.includes(key));
+  let validated = 0;
+
+  modifiedKeys.forEach(key => {
+    if (key === 'lowerCase' && hasLowercase(string)) validated++;
+
+    if (key === 'upperCase' && hasUppercase(string)) validated++;
+
+    if (key === 'numbers' && hasNumber(string)) validated++;
+
+    if (key === 'specialChars' && hasSymbol(string)) validated++;
+  });
+
+  return modifiedKeys.length === validated;
+}
