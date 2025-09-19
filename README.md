@@ -1,4 +1,9 @@
-# Random String Generator for both Typescript and Javascript
+# String Generator
+
+## About
+Created with Typescript for Node.js. This package works with both Typescript and Javascript. 
+
+Create passwords, string identifiers, salts, or anything else a random string can be used for. 
 
 ## Usage
 

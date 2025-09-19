@@ -1,7 +1,7 @@
 {
   "name": "ts-string-generator",
   "author": "Thomas Horner",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "license": "MIT",
   "keywords": [
     "typescript",
