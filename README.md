@@ -1,3 +1,5 @@
+# Random String Generator for both Typescript and Javascript
+
 ## Usage
 
 #### Options
