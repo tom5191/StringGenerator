@@ -4,6 +4,7 @@ import { convertToString, } from "./services/utils";
 
 async function generateString(options?: Options): Promise<string> {
   const pool = await createPool(options);
+  console.log("🚀 ~ generateString ~ pool:", pool)
   const generateStringArray = await generateArrayOfCharacters(options ?? {}, pool);
   const generatedString = await convertToString(generateStringArray);
 
