@@ -120,7 +120,7 @@ export function generateArrayOfCharacters({ size = 10 }: Options, pool: string[]
     console.log("🚀 ~ generateArrayOfCharacters ~ randomNumber:", randomNumber)
     console.log("🚀 ~ generateArrayOfCharacters ~ pool[randomNumber]:", pool[randomNumber])
     console.log("🚀 ~ generateArrayOfCharacters ~ ...pool[randomNumber]:", ...pool[randomNumber])
-    selectedChars.push(...pool[randomNumber]);
+    selectedChars.push(pool[randomNumber]);
   }
 
   return Promise.resolve(selectedChars);
