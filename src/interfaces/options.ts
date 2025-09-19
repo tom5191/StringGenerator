@@ -1,5 +1,5 @@
 export interface Options {
-  length?: number,
+  size?: number,
   upperCase?: boolean,
   lowerCase?: boolean,
   numbers?: boolean,

@@ -1,5 +1,4 @@
-// import * as chai from 'chai';
-// import { assert } from 'chai';
+import assert from 'assert';
 import { generate, generateMultiple } from '../src/index';
 import { createPool } from '../src/services/generator';
 import { ValidationOptions } from '../src/interfaces/options';
@@ -14,11 +13,11 @@ function match(string: string, { upperCase, lowerCase, numbers, specialChars }: 
 }
 
 function notMatch(string: string, { upperCase, lowerCase, numbers, specialChars, unsafeUrl }: ValidationOptions) {
-  if (upperCase) assert.notMatch(string, /[A-Z]/g)
-  if (lowerCase) assert.notMatch(string, /[a-z]/g)
-  if (numbers) assert.notMatch(string, /[0-9]/g)
-  if (specialChars) assert.notMatch(string, /[\`\~\!\@\#\$\%\^\&\*\-\_\+\=\<\,\>\.\?]/g)
-  if (unsafeUrl) assert.notMatch(string, /[?><=+&^$`]/g)
+  if (upperCase) assert.doesNotMatch(string, /[A-Z]/g)
+  if (lowerCase) assert.doesNotMatch(string, /[a-z]/g)
+  if (numbers) assert.doesNotMatch(string, /[0-9]/g)
+  if (specialChars) assert.doesNotMatch(string, /[\`\~\!\@\#\$\%\^\&\*\-\_\+\=\<\,\>\.\?]/g)
+  if (unsafeUrl) assert.doesNotMatch(string, /[?><=+&^$`]/g)
 }
 
 describe('string generator', function () {
@@ -61,8 +60,9 @@ describe('string generator', function () {
       notMatch(string, { upperCase: true, numbers: true, specialChars: true, unsafeUrl: true })
     });
     it('should generate 15 character string', async function () {
-      const options = { length: 15 };
+      const options = { size: 15 };
       const string = await generate(options);
+
       assert.equal(string.length, 15);
     });
     it('should only return upper case', async function () {

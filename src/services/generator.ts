@@ -85,13 +85,16 @@ const upperCase = [
   'Y',
   'Z',
 ];
-const excludeOptions = ['excluded', 'length', 'strict'];
+const excludeOptions = ['excluded', 'size', 'strict'];
+const excludeOptionsPool = ['size', 'strict']
 
 
-export async function createPool(options?: Options) {
+export async function createPool(options?: Options): Promise<string[]> {
   let pool: string[] = [];
 
-  if (options) {
+
+
+  if (options && Object.keys(options).filter(opt => !excludeOptionsPool.includes(opt)).length > 0) {
     if (options?.numbers) pool.push(...numbers);
     if (options?.specialChars) pool.push(...pool, ...specialChars);
     if (options?.lowerCase) pool.push(...pool, ...lowerCase);
@@ -105,15 +108,13 @@ export async function createPool(options?: Options) {
     pool.push(...lowerCase);
   }
 
-  pool = await shuffleArray(pool);
-
-  return Promise.resolve(pool);
+  return Promise.resolve(shuffleArray(pool));
 }
 
-export function generateArrayOfCharacters({ length = 10 }, pool) {
+export function generateArrayOfCharacters({ size = 10 }: Options, pool: string[]) {
   let selectedChars: string[] = [];
 
-  for (let i = 1; i <= length; i++) {
+  for (let i = 1; i <= size; i++) {
     const randomNumber: number = Math.floor(Math.random() * pool.length);
     selectedChars.push(...pool[randomNumber]);
   }

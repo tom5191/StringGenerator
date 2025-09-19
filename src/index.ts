@@ -2,9 +2,9 @@ import { Options } from "./interfaces/options";
 import { createPool, generateArrayOfCharacters, validateStrictString } from './services/generator'
 import { convertToString, } from "./services/utils";
 
-async function generateString(options?: Options) {
+async function generateString(options?: Options): Promise<string> {
   const pool = await createPool(options);
-  const generateStringArray = await generateArrayOfCharacters(options, pool);
+  const generateStringArray = await generateArrayOfCharacters(options ?? {}, pool);
   const generatedString = await convertToString(generateStringArray);
 
   if (options?.strict) {
@@ -18,7 +18,7 @@ async function generateString(options?: Options) {
   return generatedString;
 }
 
-export function generate(options?: Options) {
+export function generate(options?: Options): Promise<string> {
   return generateString(options)
 }
 
