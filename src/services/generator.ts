@@ -112,14 +112,10 @@ export async function createPool(options?: Options): Promise<string[]> {
 }
 
 export function generateArrayOfCharacters({ size = 10 }: Options, pool: string[]) {
-  console.log("🚀 ~ generateArrayOfCharacters ~ pool:", pool)
   let selectedChars: string[] = [];
 
   for (let i = 1; i <= size; i++) {
     const randomNumber: number = Math.floor(Math.random() * pool.length);
-    console.log("🚀 ~ generateArrayOfCharacters ~ randomNumber:", randomNumber)
-    console.log("🚀 ~ generateArrayOfCharacters ~ pool[randomNumber]:", pool[randomNumber])
-    console.log("🚀 ~ generateArrayOfCharacters ~ ...pool[randomNumber]:", ...pool[randomNumber])
     selectedChars.push(pool[randomNumber]);
   }
 
