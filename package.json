@@ -1,6 +1,16 @@
 {
+  "name": "ts-string-generator",
+  "author": "Thomas Horner",
   "version": "0.1.0",
   "license": "MIT",
+  "keywords": [
+    "typescript",
+    "string-generator",
+    "string",
+    "generator",
+    "passwords",
+    "encryption"
+  ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -30,8 +40,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "ts-string-generator",
-  "author": "Thomas Horner",
   "module": "dist/ts-string-generator.esm.js",
   "size-limit": [
     {
