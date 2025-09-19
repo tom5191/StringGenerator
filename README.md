@@ -1,3 +1,5 @@
+# Random String Generator for both Typescript and Javascript
+
 ## Usage
 
 #### Options
@@ -6,7 +8,7 @@ All values are optional, and can be used in any combination
 
 ```bash
 {
-    length: 10,
+    size: 10,
     upperCase: true,
     lowerCase: true,
     specialChar: true,
@@ -26,7 +28,7 @@ const code = await generate();
 
 ```bash
 const options = {
-    length: 15,
+    size: 15,
 };
 
 const code = await generate(options);
@@ -37,7 +39,7 @@ const code = await generate(options);
 
 ```bash
 const options = {
-    length: 15,
+    size: 15,
     upperCase:true
 };
 
@@ -49,7 +51,7 @@ const code = await generate(options);
 
 ```bash
 const options = {
-    length: 15,
+    size: 15,
     upperCase:true
     lowerCase: true,
     specialChar: true,
@@ -64,7 +66,7 @@ const code = await generate(options);
 
 ```bash
 const options = {
-    length: 15,
+    size: 15,
     upperCase:true
     lowerCase: true,
     specialChar: true,
@@ -80,7 +82,7 @@ const code = await generate(options);
 
 ```bash
 const options = {
-    length: 15,
+    size: 15,
     upperCase:true
     lowerCase: true,
     specialChar: true,
@@ -95,7 +97,7 @@ const code = await generate(options);
 #### Generate multiple strings
 ```bash
 const options = {
-    length: 15,
+    size: 15,
     upperCase:true
     lowerCase: true,
     specialChar: true,

@@ -116,7 +116,7 @@ export function generateArrayOfCharacters({ size = 10 }: Options, pool: string[]
 
   for (let i = 1; i <= size; i++) {
     const randomNumber: number = Math.floor(Math.random() * pool.length);
-    selectedChars.push(...pool[randomNumber]);
+    selectedChars.push(pool[randomNumber]);
   }
 
   return Promise.resolve(selectedChars);
